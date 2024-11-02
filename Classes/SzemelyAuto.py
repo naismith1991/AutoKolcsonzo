@@ -1,4 +1,4 @@
-from Auto import Auto
+from Classes.Auto import Auto
 
 
 class SzemelyAuto(Auto):
@@ -7,26 +7,26 @@ class SzemelyAuto(Auto):
         self.ules_szam = ules_szam
         self.loero = loero
 
+    @property
+    def rendszam(self):
+        return self._rendszam
 
-    def auto_adatok(self):
-        return(f'Auto adatai: Rendszám: {self.rendszam}, Típusa: {self.tipus}, Ülések száma: {self.ules_szam},'
-              f'Lóerő= {self.loero}, Bérleti díja: {self.berleti_dij}')
+    @property
+    def tipus(self):
+        return self._tipus
 
+    @property
+    def berleti_dij(self):
+        return self._berleti_dij
+
+    def berles(self):
+        if not self._foglalt:
+            self._foglalt = True
+        else:
+            print("Ez a kocsi már foglalt!")
 
     def berles_lemondas(self):
-        pass
-
-    def berles_listazas(self):
-        pass
-
-    def book_room(self):
-        if not self.is_booked:
-            self.is_booked = True
+        if self._foglalt:
+            self._foglalt = False
         else:
-            print("Hiba, a szoba már foglalt!")
-
-    def unbook_room(self):
-        if self.is_booked:
-            self.is_booked = False
-        else:
-            print("Hiba, a szoba nem is volt foglalt!")
+            print("Ez a kocsi nem volt foglalt!")

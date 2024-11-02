@@ -3,23 +3,21 @@ from abc import ABC, abstractmethod
 
 class Auto(ABC):
     def __init__(self, rendszam, tipus, berleti_dij):
-        self.rendszam = rendszam
-        self.tipus = tipus
-        self.berleti_dij = berleti_dij
-        self.szabad = True
-
-    @abstractmethod
-    def auto_adatok(self):
-        pass
+        self._rendszam = rendszam
+        self._tipus = tipus
+        self._berleti_dij = berleti_dij
+        self._foglalt = False
 
     @abstractmethod
     def berles(self):
-        pass
+        if not self._foglalt:
+            self._foglalt = True
+        else:
+            print("Ez a kocsi már foglalt!")
 
     @abstractmethod
     def berles_lemondas(self):
-        pass
-
-    @abstractmethod
-    def berles_listazas(self):
-        pass
+        if self._foglalt:
+            self._foglalt = False
+        else:
+            print("Ez a kocsi nem volt foglalt!")
