@@ -6,18 +6,15 @@ class Auto(ABC):
         self._rendszam = rendszam
         self._tipus = tipus
         self._berleti_dij = berleti_dij
-        self._foglalt = False
 
-    @abstractmethod
-    def berles(self):
-        if not self._foglalt:
-            self._foglalt = True
-        else:
-            print("Ez a kocsi már foglalt!")
+    @property
+    def rendszam(self):
+        return self._rendszam
 
-    @abstractmethod
-    def berles_lemondas(self):
-        if self._foglalt:
-            self._foglalt = False
-        else:
-            print("Ez a kocsi nem volt foglalt!")
+    @property
+    def tipus(self):
+        return self._tipus
+
+    @property
+    def berleti_dij(self):
+        return self._berleti_dij
